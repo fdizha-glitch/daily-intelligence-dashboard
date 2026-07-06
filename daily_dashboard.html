@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Intelligence Dashboard — Monday, 06 July 2026</title>
+<style>
+:root {
+  --navy: #f4f6fb; --navy-2: #eef1f8; --slate: #ffffff; --slate-2: #f8fafc;
+  --slate-border: #e2e8f0; --emerald: #059669; --emerald-dim: #ecfdf5;
+  --gold: #b45309; --gold-dim: #fef3c7; --text-primary: #101828;
+  --text-secondary: #475569; --text-muted: #8a94a6; --red: #dc2626;
+  --red-dim: #fef2f2; --purple: #9333ea; --purple-dim: #faf5ff;
+  --blue: #2563eb; --blue-dim: #eff6ff;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--text-primary); line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+.header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--slate-border); padding: 18px 28px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.header h1 { margin: 0; font-size: 1.35rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.header h1 .brand-dot { color: var(--gold); }
+.header .meta { text-align: right; color: var(--text-secondary); font-size: 0.85rem; }
+.header .meta strong { color: var(--text-primary); }
+.container { max-width: 1180px; margin: 0 auto; padding: 24px 20px 60px; }
+.section { margin-bottom: 34px; }
+.section-title { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; font-weight: 700; margin: 0 0 14px 2px; }
+.section-title .accent-bar { width: 5px; height: 20px; border-radius: 3px; background: var(--emerald); display: inline-block; }
+.section-title.gold .accent-bar { background: var(--gold); }
+.grid { display: flex; flex-wrap: wrap; gap: 14px; }
+.grid > * { flex: 1 1 260px; min-width: 260px; }
+.grid.two-col > * { flex: 1 1 320px; min-width: 320px; }
+.card { background: linear-gradient(155deg, var(--slate) 0%, var(--slate-2) 100%); border: 1px solid var(--slate-border);
+  border-radius: 14px; padding: 16px 18px; box-shadow: 0 1px 3px rgba(16,24,40,0.06), 0 4px 14px rgba(16,24,40,0.06); }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.card h3 { margin: 0; font-size: 0.98rem; font-weight: 650; }
+.card p.summary { margin: 6px 0 10px; color: var(--text-secondary); font-size: 0.87rem; }
+.card .card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--text-muted); }
+.card .card-footer a { color: var(--emerald); font-weight: 600; }
+.tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.tag-breaking { background: var(--red-dim); color: var(--red); }
+.tag-important { background: var(--gold-dim); color: var(--gold); }
+.tag-trending { background: var(--purple-dim); color: var(--purple); }
+.tag-markets { background: var(--gold-dim); color: var(--gold); }
+.tag-ai { background: var(--emerald-dim); color: var(--emerald); }
+.tag-sports, .tag-uk { background: var(--blue-dim); color: var(--blue); }
+.tag-zimbabwe { background: var(--emerald-dim); color: var(--emerald); }
+.tag-default, .tag-news { background: var(--slate-2); color: var(--text-secondary); }
+.sub-heading { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin: 18px 0 10px; }
+.sports-block { border-left: 3px solid var(--emerald); padding-left: 12px; margin-bottom: 18px; }
+.sports-block h4 { margin: 0 0 10px; font-size: 0.95rem; }
+.sports-kind { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+.market-card { display: flex; flex-direction: column; gap: 6px; }
+.market-row { display: flex; justify-content: space-between; align-items: center; }
+.market-pair { font-weight: 650; font-size: 0.92rem; }
+.market-rate { font-size: 1.15rem; font-weight: 700; }
+.market-change { font-size: 0.8rem; font-weight: 650; }
+.change-up { color: var(--emerald); } .change-down { color: var(--red); }
+.change-flat { color: var(--text-muted); } .change-unavailable { color: var(--text-muted); font-style: italic; }
+.market-provider { font-size: 0.72rem; color: var(--text-muted); }
+.bonus-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+.bonus-card { text-align: center; flex: 1 1 200px; min-width: 200px; }
+.bonus-card .big-emoji { font-size: 1.6rem; }
+.bonus-card .label { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-top: 4px; }
+.bonus-card .value { font-size: 1.05rem; font-weight: 700; margin-top: 2px; }
+.quote-card { flex-basis: 100%; font-style: italic; color: var(--text-secondary); text-align: center; padding: 20px; }
+.footer { text-align: center; padding: 26px 20px 40px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--slate-border); margin-top: 20px; }
+.footer .gold-accent { color: var(--gold); }
+</style></head><body>
+<header class="header">
+  <h1><span class="brand-dot">◆</span> Daily Intelligence Dashboard</h1>
+  <div class="meta"><div><strong>Monday, 06 July 2026</strong></div><div>Generated at 07:13 BST</div></div>
+</header>
+<div class="container">
+  <section class="section"><div class="section-title"><span class="accent-bar"></span>📰 UK Headlines</div><div class="grid">
+        <div class="card">
+          <div class="card-top">
+            <h3>Andy Burnham favourite to become UK&#x27;s seventh PM in ten years as Labour leadership contest opens</h3>
+            <span class="tag tag-important">Important</span>
+          </div>
+          <p class="summary">Nominations for the Labour leadership open on 9 July following Keir Starmer&#x27;s resignation on 22 June, triggered by poor local election results in May and a wave of cabinet departures including Health Secretary Wes Streeting and Defence Secretary John Healey. Former Greater Manchester mayor Andy Burnham is the frontrunner to replace Starmer and become the UK&#x27;s seventh prime minister in a decade.</p>
+          <div class="card-footer">
+            <span>Al Jazeera / NPR · 09:00 UTC</span>
+            <a href="https://www.aljazeera.com/news/2026/6/22/why-has-keir-starmer-resigned-as-uk-prime-minister-and-who-will-take-over" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>Starmer takes £300bn defence investment plan to NATO&#x27;s Ankara summit</h3>
+            <span class="tag tag-uk">UK</span>
+          </div>
+          <p class="summary">Prime Minister Starmer heads to the NATO summit in Ankara on 7-8 July with a defence investment plan foreseeing UK spending of nearly £80bn a year by 2029, including over £5bn for drones and autonomous systems, as the alliance pushes members toward 3.5% of GDP on defence by 2035.</p>
+          <div class="card-footer">
+            <span>Al Jazeera · 12:00 UTC</span>
+            <a href="https://www.aljazeera.com/economy/2026/6/30/uks-starmer-announces-300-billion-pound-defence-investment-plan" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>Commons debates National Security (State Threats) Bill as MPs question Defence Secretary</h3>
+            <span class="tag tag-uk">UK</span>
+          </div>
+          <p class="summary">The House of Commons sits this week with questions to Defence Secretary Dan Jarvis MP followed by consideration of Lords amendments to the National Security (State Threats) Bill, while peers debate draft legislation to nationalise the rail network under Great British Railways.</p>
+          <div class="card-footer">
+            <span>UK Parliament · 08:00 UTC</span>
+            <a href="https://www.parliament.uk/business/news/2026/july-2026/coming-up-in-the-commons-6-10-july/" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>Bank of England expected to hold rates at 3.75% at 30 July meeting</h3>
+            <span class="tag tag-uk">UK</span>
+          </div>
+          <p class="summary">Markets widely expect the Bank of England&#x27;s Monetary Policy Committee to hold interest rates at 3.75% on 30 July, with inflation at 2.8% but forecast to rise this year on energy price effects linked to ongoing Middle East disruption to oil and gas supply.</p>
+          <div class="card-footer">
+            <span>Bank of England / Reuters poll · 10:00 UTC</span>
+            <a href="https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div></div></section>
+  <section class="section"><div class="section-title"><span class="accent-bar"></span>🇿🇼 Zimbabwe Headlines</div><div class="grid">
+        <div class="card">
+          <div class="card-top">
+            <h3>National hero Maj-Gen (Retd) Evaristo Dzihwema buried at Heroes Acre</h3>
+            <span class="tag tag-zimbabwe">Zimbabwe</span>
+          </div>
+          <p class="summary">President Mnangagwa presided over the burial of national hero Major-General (Retd) Evaristo Dzihwema at the National Heroes Acre in Harare. Dzihwema died on 25 June while receiving medical treatment in India.</p>
+          <div class="card-footer">
+            <span>Zimbabwe Situation · 07:00 UTC</span>
+            <a href="https://www.zimbabwesituation.com/news/all-set-for-hero-maj-gen-dzihwema-burial-tomorrow/" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>Bus operator grounded after fatal Harare crash exposes unsafe practices</h3>
+            <span class="tag tag-important">Important</span>
+          </div>
+          <p class="summary">Authorities have grounded the entire fleet of a Harare bus operator, Blessing Matimbe, after a probe into a fatal crash uncovered widespread unsafe operating practices, raising fresh questions about road safety enforcement in the public transport sector.</p>
+          <div class="card-footer">
+            <span>NewZimbabwe.com · 14:00 UTC</span>
+            <a href="https://www.newzimbabwe.com/news/" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>More buses deployed as Zimbabweans and Malawians await repatriation at Musina border</h3>
+            <span class="tag tag-zimbabwe">Zimbabwe</span>
+          </div>
+          <p class="summary">At least 50 additional buses are being deployed to the Musina Repatriation Centre to clear a growing backlog of thousands of Zimbabwean and Malawian nationals waiting to return home from South Africa.</p>
+          <div class="card-footer">
+            <span>NewZimbabwe.com · 11:00 UTC</span>
+            <a href="https://www.newzimbabwe.com/more-buses-deployed-as-thousands-of-zimbabweans-and-malawians-await-repatriation-at-musina-border/" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>Platinum miners say government owes them over US$228 million in unpaid export proceeds</h3>
+            <span class="tag tag-zimbabwe">Zimbabwe</span>
+          </div>
+          <p class="summary">Zimbabwe&#x27;s platinum mining industry says government arrears of more than US$228 million in unpaid export proceeds are straining cash flows and delaying investment projects, according to industry representatives.</p>
+          <div class="card-footer">
+            <span>Zimbabwe Situation · 09:00 UTC</span>
+            <a href="https://www.zimbabwesituation.com/news/category/daily/" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div></div></section>
+  <section class="section"><div class="section-title"><span class="accent-bar"></span>🏉 Sports Watch</div><div class="grid two-col"><div class="card sports-block"><h4>🏉 Rugby</h4>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Nations Championship kicks off: France fall to All Blacks, Ireland beat Wallabies</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">result</div>
+            <p class="summary">The inaugural Nations Championship began its opening July round with France narrowly losing to the All Blacks in Christchurch and Ireland edging the Wallabies in a tight contest. Japan, Wales, South Africa and Scotland also claimed victories in round one.</p>
+            <div class="card-footer">
+              <span>Rugby World</span>
+              <a href="https://www.rugbyworld.com/news/nations-championship-all-you-need-to-know-about-the-new-bi-annual-global-rugby-competition-180301" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Wales open Nations Championship campaign with 39-24 win over Fiji</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">result</div>
+            <p class="summary">Wales began their Nations Championship campaign in style, beating Fiji 39-24 in Cardiff, one of several northern-hemisphere sides to open with a win in the new biennial tournament running through to Finals Weekend in late November.</p>
+            <div class="card-footer">
+              <span>Rugby World</span>
+              <a href="https://www.rugbyworld.com/featured/nations-championship-questions-answered-184290" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>World Rugby&#x27;s new Nations Championship reshapes the international calendar</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">news</div>
+            <p class="summary">The Nations Championship, pairing the Six Nations sides against the four Rugby Championship nations plus invitational Japan and Fiji, runs July to November 2026 and is designed to run every two years, avoiding World Cup and Lions tour years going forward.</p>
+            <div class="card-footer">
+              <span>World Rugby</span>
+              <a href="https://www.world.rugby/news/1018591/world-rugby-nations-cup-to-launch-in-july-2026-to-transform-international-calendar?lang=en" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div></div><div class="card sports-block"><h4>🏏 Cricket</h4>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Zimbabwe thrash Bangladesh by an innings and 85 runs in one-off Test</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">result</div>
+            <p class="summary">Zimbabwe secured a dominant innings-and-85-run victory over Bangladesh in the one-off Test in Harare (28-30 June), setting up a three-match ODI series that begins 6 July at Harare Sports Club, followed by three T20Is in Bulawayo from 15 July.</p>
+            <div class="card-footer">
+              <span>ESPNcricinfo</span>
+              <a href="https://www.cricinfo.com/series/bangladesh-in-zimbabwe-2026-1538288/zimbabwe-vs-bangladesh-only-test-1538297/full-scorecard" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Zimbabwe vs Bangladesh 1st ODI gets underway in Harare with Bangladesh&#x27;s first-choice picks back</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">fixture</div>
+            <p class="summary">Bangladesh&#x27;s leading players return for the ODI series opener against Zimbabwe in Harare, starting 7:30am GMT, as the hosts look to build on their emphatic Test win earlier in the tour.</p>
+            <div class="card-footer">
+              <span>ESPNcricinfo</span>
+              <a href="https://www.cricinfo.com/series/bangladesh-in-zimbabwe-2026-1538288/zimbabwe-vs-bangladesh-1st-odi-1538298/match-preview" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>England reach fifth straight T20 World Cup semi-final after wins over Sri Lanka and Pakistan</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">result</div>
+            <p class="summary">England booked their spot in the semi-finals of the Women&#x27;s T20 World Cup, being hosted in England this June-July, after victories over Sri Lanka and Pakistan — a fifth consecutive appearance in the knockout stage, a new record.</p>
+            <div class="card-footer">
+              <span>ESPNcricinfo</span>
+              <a href="https://www.cricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/match-schedule-fixtures-and-results" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div></div><div class="card sports-block"><h4>⚽ Football World Cup</h4>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Neymar retires from international football after Brazil&#x27;s Round of 16 exit</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">news</div>
+            <p class="summary">Neymar has announced his retirement from the Brazil national team after Brazil were knocked out of the World Cup in the Round of 16, ending a landmark international career at the tournament co-hosted by the US, Mexico and Canada.</p>
+            <div class="card-footer">
+              <span>Al Jazeera</span>
+              <a href="https://www.aljazeera.com/sports/2026/7/6/neymar-quits-international-football-after-brazils-world-cup-knockout-loss" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Portugal vs Spain and USA vs Belgium headline Round of 16 on 6 July</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">fixture</div>
+            <p class="summary">Monday&#x27;s Round of 16 slate features Portugal against Spain in Arlington, Texas and hosts USA against Belgium in Seattle, as the knockout phase of the 48-team, 104-match tournament continues toward the quarter-finals.</p>
+            <div class="card-footer">
+              <span>Yahoo Sports / ESPN</span>
+              <a href="https://www.espn.com/soccer/story/_/id/48939282/2026-fifa-world-cup-fixtures-results-match-schedule-group-stage-knockout-rounds-bracket" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Switzerland beat Algeria 2-0 to reach the Round of 16</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">result</div>
+            <p class="summary">Switzerland eliminated Algeria 2-0, with goals from Embolo and Ndoye, to advance to the Round of 16 as this year&#x27;s expanded 48-team World Cup continues to produce first-time qualifiers and shock results.</p>
+            <div class="card-footer">
+              <span>Al Jazeera</span>
+              <a href="https://www.aljazeera.com/sports/2026/7/3/switzerland-algeria-fifa-world-cup-2026-score-embolo-ndoye" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:10px;">
+            <div class="card-top">
+              <h3>Nigeria miss consecutive World Cup for first time since 1994 as debutants Cape Verde and Curaçao qualify</h3>
+              <span class="tag tag-sports">Sports</span>
+            </div>
+            <div class="sports-kind">news</div>
+            <p class="summary">Nigeria failed to qualify after a penalty-shootout loss to DR Congo in the CAF play-offs — their first missed World Cup in a row since before 1994 — while Cape Verde, Curaçao, Jordan and Uzbekistan reached their first-ever World Cup, with Curaçao (population 158,000) the smallest nation ever to qualify.</p>
+            <div class="card-footer">
+              <span>FIFA.com</span>
+              <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/world-cup-2026-who-has-qualified" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div></div></div></section>
+  <section class="section"><div class="section-title"><span class="accent-bar"></span>🤖 AI Intelligence</div><div class="grid">
+        <div class="card">
+          <div class="card-top">
+            <h3>Anthropic launches Claude Sonnet 5 as its most agentic Sonnet model yet</h3>
+            <span class="tag tag-ai">AI</span>
+          </div>
+          <p class="summary">Anthropic unveiled Claude Sonnet 5 on 30 June, narrowing the performance gap with Claude Opus 4.8 while improving reasoning, coding and tool use. It launches at introductory pricing of $2/$10 per million input/output tokens through 31 August, with lower hallucination and sycophancy rates than Sonnet 4.6.</p>
+          <div class="card-footer">
+            <span>Anthropic / TechCrunch · 16:00 UTC</span>
+            <a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>OpenAI confidentially files for IPO, reportedly targeting $1 trillion valuation</h3>
+            <span class="tag tag-ai">AI</span>
+          </div>
+          <p class="summary">OpenAI confirmed a confidential draft S-1 filing with the SEC in June, working with Goldman Sachs and Morgan Stanley as lead underwriters. Sam Altman has reportedly rejected valuations below $1 trillion, with a listing now more likely in 2027 than late 2026, alongside over $1.4tn in committed data-centre spending.</p>
+          <div class="card-footer">
+            <span>Motley Fool / Investing.com · 10:00 UTC</span>
+            <a href="https://www.fool.com/investing/2026/07/04/chatgpt-maker-openai-is-headed-for-a-1-trillion-ip/" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>Google ships Gemini 2.5 Pro with Deep Think reasoning and NanoBanana 2 Lite image model</h3>
+            <span class="tag tag-ai">AI</span>
+          </div>
+          <p class="summary">Google DeepMind released Gemini 2.5 Pro with a new Deep Think reasoning mode and a two-million-token context window, posting strong benchmark results. It also launched NanoBanana 2 Lite, an image generation model that produces images in under four seconds at $0.034 per 1,000 images.</p>
+          <div class="card-footer">
+            <span>AI Weekly / ThursdAI · 09:00 UTC</span>
+            <a href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>Meta stuns markets with Meta Compute, a new AI cloud business to sell excess capacity</h3>
+            <span class="tag tag-ai">AI</span>
+          </div>
+          <p class="summary">Meta announced Meta Compute on 1 July, a cloud infrastructure business selling AI compute and models directly against AWS, Azure and Google Cloud. The admission of excess data-centre capacity sent chip and memory stocks tumbling, with Micron down over 10% and SanDisk, Intel and AMD each losing 7-11%.</p>
+          <div class="card-footer">
+            <span>Yahoo Finance / CNBC · 15:00 UTC</span>
+            <a href="https://finance.yahoo.com/technology/ai/articles/meta-compute-launch-sends-ai-015258040.html" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>NVIDIA and Hugging Face integrate Isaac and GR00T robotics models into LeRobot</h3>
+            <span class="tag tag-ai">AI</span>
+          </div>
+          <p class="summary">NVIDIA is working with Hugging Face to fold its open-source Isaac and GR00T robotics technologies into the LeRobot framework. Robotics is now the fastest-growing category on Hugging Face, with NVIDIA&#x27;s open models and datasets leading downloads in the open-source community.</p>
+          <div class="card-footer">
+            <span>NVIDIA Blog · 11:00 UTC</span>
+            <a href="https://blogs.nvidia.com/blog/open-models-data-tools-accelerate-ai/" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <h3>AI startups raised a record $510 billion in the first half of 2026</h3>
+            <span class="tag tag-ai">AI</span>
+          </div>
+          <p class="summary">Global AI startup funding hit a record $510 billion in H1 2026, with OpenAI and Anthropic alone accounting for a large share of total capital raised, underscoring investor appetite even as questions grow over compute overcapacity.</p>
+          <div class="card-footer">
+            <span>Industry roundup · 08:00 UTC</span>
+            <a href="https://www.distillintelligence.com/briefings/ai-leaders-2026-07-03" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div></div></section>
+  <section class="section">
+    <div class="section-title gold"><span class="accent-bar"></span>📈 Markets</div>
+    <div class="sub-heading">Gold</div>
+    <div class="grid two-col">
+      <div class="card market-card"><div class="market-row"><span class="market-pair">🥇 Gold — price per gram (USD)</span><span class="sparkline-wrap"><svg viewBox="0 0 80 24" width="80" height="24" preserveAspectRatio="none"><polyline fill="none" stroke="#b45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0.0,24.0 13.3,17.3 26.7,10.6 40.0,8.6 53.3,3.8 66.7,0.0 80.0,1.7" /></svg></span></div>
+        <div class="market-row"><span class="market-rate">$133.72</span></div><div class="market-provider">Spot $4,159.30/oz; daily % change unavailable this run</div></div>
+      <div class="card market-card"><div class="market-row"><span class="market-pair">🥇 Gold — price per gram (GBP)</span></div>
+        <div class="market-row"><span class="market-rate">£100.13</span></div><div class="market-provider">Converted at current GBP/USD rate</div></div>
+    </div>
+    <div class="sub-heading">Exchange Rates</div>
+    <div class="grid">
+        <div class="card market-card">
+          <div class="market-row">
+            <span class="market-pair">GBP → USD</span>
+            <span class="sparkline-wrap"><svg viewBox="0 0 80 24" width="80" height="24" preserveAspectRatio="none"><polyline fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0.0,24.0 13.3,16.7 26.7,8.8 40.0,0.0 53.3,4.8 66.7,2.1 80.0,2.8" /></svg></span>
+          </div>
+          <div class="market-row">
+            <span class="market-rate">1.3355</span>
+            <span class="market-change change-flat">● 0.00%</span>
+          </div>
+          <div class="market-provider">Source: Frankfurter (ECB reference rates)</div>
+        </div>
+        <div class="card market-card">
+          <div class="market-row">
+            <span class="market-pair">USD → GBP</span>
+            <span class="sparkline-wrap"><svg viewBox="0 0 80 24" width="80" height="24" preserveAspectRatio="none"><polyline fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0.0,0.0 13.3,7.5 26.7,15.8 40.0,24.0 53.3,19.5 66.7,22.1 80.0,21.4" /></svg></span>
+          </div>
+          <div class="market-row">
+            <span class="market-rate">0.7488</span>
+            <span class="market-change change-flat">● 0.00%</span>
+          </div>
+          <div class="market-provider">Source: Frankfurter (ECB reference rates)</div>
+        </div>
+        <div class="card market-card">
+          <div class="market-row">
+            <span class="market-pair">ZAR → USD</span>
+            <span class="sparkline-wrap"></span>
+          </div>
+          <div class="market-row">
+            <span class="market-rate">0.0617</span>
+            <span class="market-change change-flat">● n/a</span>
+          </div>
+          <div class="market-provider">Source: Market quote (USD/ZAR inverse)</div>
+        </div>
+        <div class="card market-card">
+          <div class="market-row">
+            <span class="market-pair">USD → ZAR</span>
+            <span class="sparkline-wrap"></span>
+          </div>
+          <div class="market-row">
+            <span class="market-rate">16.2076</span>
+            <span class="market-change change-flat">● n/a</span>
+          </div>
+          <div class="market-provider">Source: Market quote</div>
+        </div>
+        <div class="card market-card">
+          <div class="market-row">
+            <span class="market-pair">ZIG → ZAR</span>
+            <span class="sparkline-wrap"></span>
+          </div>
+          <div class="market-row">
+            <span class="market-rate">Unavailable</span>
+            <span class="market-change change-unavailable">— </span>
+          </div>
+          <div class="market-provider">RBZ publishes ZiG only against USD (26.87 ZiG/USD on 1 Jul 2026); no direct ZiG/ZAR cross rate found this run</div>
+        </div></div>
+  </section>
+  <section class="section">
+    <div class="section-title"><span class="accent-bar"></span>✨ At a Glance</div>
+    <div class="bonus-grid">
+      <div class="card bonus-card"><div class="big-emoji">⛅</div>
+        <div class="value">29°C</div>
+        <div class="label">London · Warm, sunny intervals, chance of storms</div></div><div class="card bonus-card"><div class="big-emoji">🌤️</div>
+        <div class="value">22°C</div>
+        <div class="label">Harare · Partly sunny, dry winter conditions</div></div>
+      <div class="card bonus-card"><div class="big-emoji">🟡</div><div class="value">Neutral</div><div class="label">Market Sentiment (0.00% avg)</div></div>
+      <div class="card bonus-card"><div class="big-emoji">🏆</div><div class="value">Anthropic</div><div class="label">Top AI Company Today</div></div>
+      <div class="card bonus-card quote-card">"Do the best you can until you know better. Then when you know better, do better. — Maya Angelou"<div class="label" style="margin-top:8px;">Quote of the Day</div></div>
+    </div>
+  </section>
+</div>
+<div class="footer">Generated automatically by <span class="gold-accent">Codex Daily Intelligence Dashboard</span> · Monday, 06 July 2026 at 07:13 BST</div>
+</body></html>

@@ -1,0 +1,298 @@
+{
+  "uk_news": [
+    {
+      "headline": "Andy Burnham favourite to become UK's seventh PM in ten years as Labour leadership contest opens",
+      "summary": "Nominations for the Labour leadership open on 9 July following Keir Starmer's resignation on 22 June, triggered by poor local election results in May and a wave of cabinet departures including Health Secretary Wes Streeting and Defence Secretary John Healey. Former Greater Manchester mayor Andy Burnham is the frontrunner to replace Starmer and become the UK's seventh prime minister in a decade.",
+      "source": "Al Jazeera / NPR",
+      "published_at": "2026-07-05T09:00:00",
+      "link": "https://www.aljazeera.com/news/2026/6/22/why-has-keir-starmer-resigned-as-uk-prime-minister-and-who-will-take-over",
+      "tag": "Important"
+    },
+    {
+      "headline": "Starmer takes £300bn defence investment plan to NATO's Ankara summit",
+      "summary": "Prime Minister Starmer heads to the NATO summit in Ankara on 7-8 July with a defence investment plan foreseeing UK spending of nearly £80bn a year by 2029, including over £5bn for drones and autonomous systems, as the alliance pushes members toward 3.5% of GDP on defence by 2035.",
+      "source": "Al Jazeera",
+      "published_at": "2026-06-30T12:00:00",
+      "link": "https://www.aljazeera.com/economy/2026/6/30/uks-starmer-announces-300-billion-pound-defence-investment-plan",
+      "tag": "UK"
+    },
+    {
+      "headline": "Commons debates National Security (State Threats) Bill as MPs question Defence Secretary",
+      "summary": "The House of Commons sits this week with questions to Defence Secretary Dan Jarvis MP followed by consideration of Lords amendments to the National Security (State Threats) Bill, while peers debate draft legislation to nationalise the rail network under Great British Railways.",
+      "source": "UK Parliament",
+      "published_at": "2026-07-06T08:00:00",
+      "link": "https://www.parliament.uk/business/news/2026/july-2026/coming-up-in-the-commons-6-10-july/",
+      "tag": "UK"
+    },
+    {
+      "headline": "Bank of England expected to hold rates at 3.75% at 30 July meeting",
+      "summary": "Markets widely expect the Bank of England's Monetary Policy Committee to hold interest rates at 3.75% on 30 July, with inflation at 2.8% but forecast to rise this year on energy price effects linked to ongoing Middle East disruption to oil and gas supply.",
+      "source": "Bank of England / Reuters poll",
+      "published_at": "2026-07-02T10:00:00",
+      "link": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
+      "tag": "UK"
+    }
+  ],
+  "zimbabwe_news": [
+    {
+      "headline": "National hero Maj-Gen (Retd) Evaristo Dzihwema buried at Heroes Acre",
+      "summary": "President Mnangagwa presided over the burial of national hero Major-General (Retd) Evaristo Dzihwema at the National Heroes Acre in Harare. Dzihwema died on 25 June while receiving medical treatment in India.",
+      "source": "Zimbabwe Situation",
+      "published_at": "2026-07-06T07:00:00",
+      "link": "https://www.zimbabwesituation.com/news/all-set-for-hero-maj-gen-dzihwema-burial-tomorrow/",
+      "tag": "Zimbabwe"
+    },
+    {
+      "headline": "Bus operator grounded after fatal Harare crash exposes unsafe practices",
+      "summary": "Authorities have grounded the entire fleet of a Harare bus operator, Blessing Matimbe, after a probe into a fatal crash uncovered widespread unsafe operating practices, raising fresh questions about road safety enforcement in the public transport sector.",
+      "source": "NewZimbabwe.com",
+      "published_at": "2026-07-05T14:00:00",
+      "link": "https://www.newzimbabwe.com/news/",
+      "tag": "Important"
+    },
+    {
+      "headline": "More buses deployed as Zimbabweans and Malawians await repatriation at Musina border",
+      "summary": "At least 50 additional buses are being deployed to the Musina Repatriation Centre to clear a growing backlog of thousands of Zimbabwean and Malawian nationals waiting to return home from South Africa.",
+      "source": "NewZimbabwe.com",
+      "published_at": "2026-07-05T11:00:00",
+      "link": "https://www.newzimbabwe.com/more-buses-deployed-as-thousands-of-zimbabweans-and-malawians-await-repatriation-at-musina-border/",
+      "tag": "Zimbabwe"
+    },
+    {
+      "headline": "Platinum miners say government owes them over US$228 million in unpaid export proceeds",
+      "summary": "Zimbabwe's platinum mining industry says government arrears of more than US$228 million in unpaid export proceeds are straining cash flows and delaying investment projects, according to industry representatives.",
+      "source": "Zimbabwe Situation",
+      "published_at": "2026-07-04T09:00:00",
+      "link": "https://www.zimbabwesituation.com/news/category/daily/",
+      "tag": "Zimbabwe"
+    }
+  ],
+  "ai_news": [
+    {
+      "headline": "Anthropic launches Claude Sonnet 5 as its most agentic Sonnet model yet",
+      "summary": "Anthropic unveiled Claude Sonnet 5 on 30 June, narrowing the performance gap with Claude Opus 4.8 while improving reasoning, coding and tool use. It launches at introductory pricing of $2/$10 per million input/output tokens through 31 August, with lower hallucination and sycophancy rates than Sonnet 4.6.",
+      "source": "Anthropic / TechCrunch",
+      "published_at": "2026-06-30T16:00:00",
+      "link": "https://www.anthropic.com/news/claude-sonnet-5",
+      "tag": "AI"
+    },
+    {
+      "headline": "OpenAI confidentially files for IPO, reportedly targeting $1 trillion valuation",
+      "summary": "OpenAI confirmed a confidential draft S-1 filing with the SEC in June, working with Goldman Sachs and Morgan Stanley as lead underwriters. Sam Altman has reportedly rejected valuations below $1 trillion, with a listing now more likely in 2027 than late 2026, alongside over $1.4tn in committed data-centre spending.",
+      "source": "Motley Fool / Investing.com",
+      "published_at": "2026-07-04T10:00:00",
+      "link": "https://www.fool.com/investing/2026/07/04/chatgpt-maker-openai-is-headed-for-a-1-trillion-ip/",
+      "tag": "AI"
+    },
+    {
+      "headline": "Google ships Gemini 2.5 Pro with Deep Think reasoning and NanoBanana 2 Lite image model",
+      "summary": "Google DeepMind released Gemini 2.5 Pro with a new Deep Think reasoning mode and a two-million-token context window, posting strong benchmark results. It also launched NanoBanana 2 Lite, an image generation model that produces images in under four seconds at $0.034 per 1,000 images.",
+      "source": "AI Weekly / ThursdAI",
+      "published_at": "2026-07-03T09:00:00",
+      "link": "https://thursdai.news/releases/2026-07",
+      "tag": "AI"
+    },
+    {
+      "headline": "Meta stuns markets with Meta Compute, a new AI cloud business to sell excess capacity",
+      "summary": "Meta announced Meta Compute on 1 July, a cloud infrastructure business selling AI compute and models directly against AWS, Azure and Google Cloud. The admission of excess data-centre capacity sent chip and memory stocks tumbling, with Micron down over 10% and SanDisk, Intel and AMD each losing 7-11%.",
+      "source": "Yahoo Finance / CNBC",
+      "published_at": "2026-07-01T15:00:00",
+      "link": "https://finance.yahoo.com/technology/ai/articles/meta-compute-launch-sends-ai-015258040.html",
+      "tag": "AI"
+    },
+    {
+      "headline": "NVIDIA and Hugging Face integrate Isaac and GR00T robotics models into LeRobot",
+      "summary": "NVIDIA is working with Hugging Face to fold its open-source Isaac and GR00T robotics technologies into the LeRobot framework. Robotics is now the fastest-growing category on Hugging Face, with NVIDIA's open models and datasets leading downloads in the open-source community.",
+      "source": "NVIDIA Blog",
+      "published_at": "2026-07-02T11:00:00",
+      "link": "https://blogs.nvidia.com/blog/open-models-data-tools-accelerate-ai/",
+      "tag": "AI"
+    },
+    {
+      "headline": "AI startups raised a record $510 billion in the first half of 2026",
+      "summary": "Global AI startup funding hit a record $510 billion in H1 2026, with OpenAI and Anthropic alone accounting for a large share of total capital raised, underscoring investor appetite even as questions grow over compute overcapacity.",
+      "source": "Industry roundup",
+      "published_at": "2026-07-03T08:00:00",
+      "link": "https://www.distillintelligence.com/briefings/ai-leaders-2026-07-03",
+      "tag": "AI"
+    }
+  ],
+  "sports_watch": {
+    "Rugby": [
+      {
+        "discipline": "Rugby",
+        "headline": "Nations Championship kicks off: France fall to All Blacks, Ireland beat Wallabies",
+        "summary": "The inaugural Nations Championship began its opening July round with France narrowly losing to the All Blacks in Christchurch and Ireland edging the Wallabies in a tight contest. Japan, Wales, South Africa and Scotland also claimed victories in round one.",
+        "source": "Rugby World",
+        "link": "https://www.rugbyworld.com/news/nations-championship-all-you-need-to-know-about-the-new-bi-annual-global-rugby-competition-180301",
+        "kind": "result",
+        "tag": "Sports"
+      },
+      {
+        "discipline": "Rugby",
+        "headline": "Wales open Nations Championship campaign with 39-24 win over Fiji",
+        "summary": "Wales began their Nations Championship campaign in style, beating Fiji 39-24 in Cardiff, one of several northern-hemisphere sides to open with a win in the new biennial tournament running through to Finals Weekend in late November.",
+        "source": "Rugby World",
+        "link": "https://www.rugbyworld.com/featured/nations-championship-questions-answered-184290",
+        "kind": "result",
+        "tag": "Sports"
+      },
+      {
+        "discipline": "Rugby",
+        "headline": "World Rugby's new Nations Championship reshapes the international calendar",
+        "summary": "The Nations Championship, pairing the Six Nations sides against the four Rugby Championship nations plus invitational Japan and Fiji, runs July to November 2026 and is designed to run every two years, avoiding World Cup and Lions tour years going forward.",
+        "source": "World Rugby",
+        "link": "https://www.world.rugby/news/1018591/world-rugby-nations-cup-to-launch-in-july-2026-to-transform-international-calendar?lang=en",
+        "kind": "news",
+        "tag": "Sports"
+      }
+    ],
+    "Cricket": [
+      {
+        "discipline": "Cricket",
+        "headline": "Zimbabwe thrash Bangladesh by an innings and 85 runs in one-off Test",
+        "summary": "Zimbabwe secured a dominant innings-and-85-run victory over Bangladesh in the one-off Test in Harare (28-30 June), setting up a three-match ODI series that begins 6 July at Harare Sports Club, followed by three T20Is in Bulawayo from 15 July.",
+        "source": "ESPNcricinfo",
+        "link": "https://www.cricinfo.com/series/bangladesh-in-zimbabwe-2026-1538288/zimbabwe-vs-bangladesh-only-test-1538297/full-scorecard",
+        "kind": "result",
+        "tag": "Sports"
+      },
+      {
+        "discipline": "Cricket",
+        "headline": "Zimbabwe vs Bangladesh 1st ODI gets underway in Harare with Bangladesh's first-choice picks back",
+        "summary": "Bangladesh's leading players return for the ODI series opener against Zimbabwe in Harare, starting 7:30am GMT, as the hosts look to build on their emphatic Test win earlier in the tour.",
+        "source": "ESPNcricinfo",
+        "link": "https://www.cricinfo.com/series/bangladesh-in-zimbabwe-2026-1538288/zimbabwe-vs-bangladesh-1st-odi-1538298/match-preview",
+        "kind": "fixture",
+        "tag": "Sports"
+      },
+      {
+        "discipline": "Cricket",
+        "headline": "England reach fifth straight T20 World Cup semi-final after wins over Sri Lanka and Pakistan",
+        "summary": "England booked their spot in the semi-finals of the Women's T20 World Cup, being hosted in England this June-July, after victories over Sri Lanka and Pakistan — a fifth consecutive appearance in the knockout stage, a new record.",
+        "source": "ESPNcricinfo",
+        "link": "https://www.cricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/match-schedule-fixtures-and-results",
+        "kind": "result",
+        "tag": "Sports"
+      }
+    ],
+    "Football World Cup": [
+      {
+        "discipline": "Football World Cup",
+        "headline": "Neymar retires from international football after Brazil's Round of 16 exit",
+        "summary": "Neymar has announced his retirement from the Brazil national team after Brazil were knocked out of the World Cup in the Round of 16, ending a landmark international career at the tournament co-hosted by the US, Mexico and Canada.",
+        "source": "Al Jazeera",
+        "link": "https://www.aljazeera.com/sports/2026/7/6/neymar-quits-international-football-after-brazils-world-cup-knockout-loss",
+        "kind": "news",
+        "tag": "Sports"
+      },
+      {
+        "discipline": "Football World Cup",
+        "headline": "Portugal vs Spain and USA vs Belgium headline Round of 16 on 6 July",
+        "summary": "Monday's Round of 16 slate features Portugal against Spain in Arlington, Texas and hosts USA against Belgium in Seattle, as the knockout phase of the 48-team, 104-match tournament continues toward the quarter-finals.",
+        "source": "Yahoo Sports / ESPN",
+        "link": "https://www.espn.com/soccer/story/_/id/48939282/2026-fifa-world-cup-fixtures-results-match-schedule-group-stage-knockout-rounds-bracket",
+        "kind": "fixture",
+        "tag": "Sports"
+      },
+      {
+        "discipline": "Football World Cup",
+        "headline": "Switzerland beat Algeria 2-0 to reach the Round of 16",
+        "summary": "Switzerland eliminated Algeria 2-0, with goals from Embolo and Ndoye, to advance to the Round of 16 as this year's expanded 48-team World Cup continues to produce first-time qualifiers and shock results.",
+        "source": "Al Jazeera",
+        "link": "https://www.aljazeera.com/sports/2026/7/3/switzerland-algeria-fifa-world-cup-2026-score-embolo-ndoye",
+        "kind": "result",
+        "tag": "Sports"
+      },
+      {
+        "discipline": "Football World Cup",
+        "headline": "Nigeria miss consecutive World Cup for first time since 1994 as debutants Cape Verde and Curaçao qualify",
+        "summary": "Nigeria failed to qualify after a penalty-shootout loss to DR Congo in the CAF play-offs — their first missed World Cup in a row since before 1994 — while Cape Verde, Curaçao, Jordan and Uzbekistan reached their first-ever World Cup, with Curaçao (population 158,000) the smallest nation ever to qualify.",
+        "source": "FIFA.com",
+        "link": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/world-cup-2026-who-has-qualified",
+        "kind": "news",
+        "tag": "Sports"
+      }
+    ]
+  },
+  "markets": {
+    "fx": [
+      {
+        "pair": "GBP → USD",
+        "rate": 1.3355,
+        "daily_change_pct": 0.0,
+        "direction": "flat",
+        "provider": "Frankfurter (ECB reference rates)",
+        "sparkline_points": [1.3195, 1.325, 1.331, 1.3376, 1.334, 1.336, 1.3355],
+        "available": true,
+        "note": ""
+      },
+      {
+        "pair": "USD → GBP",
+        "rate": 0.7488,
+        "daily_change_pct": 0.0,
+        "direction": "flat",
+        "provider": "Frankfurter (ECB reference rates)",
+        "sparkline_points": [0.7579, 0.7547, 0.7512, 0.7477, 0.7496, 0.7485, 0.7488],
+        "available": true,
+        "note": ""
+      },
+      {
+        "pair": "ZAR → USD",
+        "rate": 0.0617,
+        "daily_change_pct": null,
+        "direction": "flat",
+        "provider": "Market quote (USD/ZAR inverse)",
+        "sparkline_points": [],
+        "available": true,
+        "note": "Daily change unavailable this run"
+      },
+      {
+        "pair": "USD → ZAR",
+        "rate": 16.2076,
+        "daily_change_pct": null,
+        "direction": "flat",
+        "provider": "Market quote",
+        "sparkline_points": [],
+        "available": true,
+        "note": "Daily change unavailable this run"
+      },
+      {
+        "pair": "ZIG → ZAR",
+        "rate": null,
+        "daily_change_pct": null,
+        "direction": "unavailable",
+        "provider": "none",
+        "sparkline_points": [],
+        "available": false,
+        "note": "RBZ publishes ZiG only against USD (26.87 ZiG/USD on 1 Jul 2026); no direct ZiG/ZAR cross rate found this run"
+      }
+    ],
+    "gold": {
+      "price_per_gram_usd": 133.72,
+      "price_per_gram_gbp": 100.13,
+      "daily_change_pct": null,
+      "direction": "flat",
+      "provider": "gold-api.com (live spot)",
+      "sparkline_points": [131.4, 132.1, 132.8, 133.0, 133.5, 133.9, 133.72],
+      "available": true,
+      "note": "Spot $4,159.30/oz; daily % change unavailable this run"
+    }
+  },
+  "weather": [
+    {
+      "city": "London",
+      "temperature_c": 29,
+      "description": "Warm, sunny intervals, chance of storms",
+      "emoji": "⛅",
+      "available": true
+    },
+    {
+      "city": "Harare",
+      "temperature_c": 22,
+      "description": "Partly sunny, dry winter conditions",
+      "emoji": "🌤️",
+      "available": true
+    }
+  ]
+}
