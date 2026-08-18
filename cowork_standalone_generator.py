@@ -75,7 +75,21 @@ def news_card(item: dict, default_tag: str = "News") -> str:
         </div>"""
 
 
+def format_date(value) -> str:
+    """Render a story date as e.g. '15 Aug 2026' from a date or datetime ISO string."""
+    if not value:
+        return ""
+    try:
+        return datetime.fromisoformat(str(value)).strftime("%d %b %Y")
+    except ValueError:
+        return ""
+
+
 def sports_card(story: dict) -> str:
+    date_display = format_date(story.get("published_at"))
+    source_line = esc(story["source"])
+    if date_display:
+        source_line = f"{source_line} · {date_display}"
     return f"""
           <div class="card" style="margin-bottom:10px;">
             <div class="card-top">
@@ -85,7 +99,7 @@ def sports_card(story: dict) -> str:
             <div class="sports-kind">{esc(story.get('kind', 'news'))}</div>
             <p class="summary">{esc(story['summary'])}</p>
             <div class="card-footer">
-              <span>{esc(story['source'])}</span>
+              <span>{source_line}</span>
               <a href="{esc(story.get('link', '#'))}" target="_blank" rel="noopener">Read →</a>
             </div>
           </div>"""
