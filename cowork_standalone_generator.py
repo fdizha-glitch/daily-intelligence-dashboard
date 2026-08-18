@@ -54,11 +54,11 @@ def tag_class(tag: str) -> str:
 def news_card(item: dict, default_tag: str = "News") -> str:
     tag = item.get("tag", default_tag)
     published = item.get("published_at", "")
-    time_display = "Time unavailable"
+    time_display = "Date unavailable"
     if published:
         try:
             dt = datetime.fromisoformat(published)
-            time_display = dt.strftime("%H:%M UTC")
+            time_display = dt.strftime("%d %b %Y · %H:%M UTC")
         except ValueError:
             pass
     return f"""
