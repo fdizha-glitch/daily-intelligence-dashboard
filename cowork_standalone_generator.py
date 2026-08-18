@@ -113,6 +113,62 @@ def fx_card(rate: dict, sparkline_color="#059669") -> str:
         </div>"""
 
 
+def resolve_data_date(data: dict):
+    """Return the date the underlying data represents, as a `date`, or None.
+
+    Prefers an explicit meta.data_date, then meta.generated_for, then falls
+    back to the most recent `published_at` seen across the news sections.
+    """
+    meta = data.get("meta", {}) or {}
+    for key in ("data_date", "generated_for"):
+        raw = meta.get(key)
+        if raw:
+            try:
+                return datetime.fromisoformat(str(raw)).date()
+            except ValueError:
+                pass
+    latest = None
+    sections = [data.get("uk_news", []), data.get("zimbabwe_news", []), data.get("ai_news", [])]
+    for section in sections:
+        for item in section:
+            published = item.get("published_at")
+            if not published:
+                continue
+            try:
+                dt = datetime.fromisoformat(str(published)).date()
+            except ValueError:
+                continue
+            if latest is None or dt > latest:
+                latest = dt
+    return latest
+
+
+def freshness_banner(data: dict, today) -> tuple[str, str]:
+    """Return (as_of_text, banner_html).
+
+    The banner is only rendered when the data is more than one day stale,
+    so a silently-frozen input file is called out on the dashboard itself
+    instead of masquerading as fresh.
+    """
+    data_date = resolve_data_date(data)
+    if data_date is None:
+        return (
+            "Data date unknown",
+            '<div class="stale-banner">⚠️ This dashboard could not determine how recent its data is — '
+            'the input file is missing a <code>meta.data_date</code> and dated headlines. Re-run the data refresh.</div>',
+        )
+    as_of = data_date.strftime("%A, %d %B %Y")
+    age_days = (today - data_date).days
+    if age_days <= 1:
+        return f"Data as of {as_of}", ""
+    plural = "day" if age_days == 1 else "days"
+    return (
+        f"Data as of {as_of}",
+        f'<div class="stale-banner">⚠️ <strong>Stale data:</strong> this briefing is built from data that is '
+        f'{age_days} {plural} old (as of {esc(as_of)}). Re-run the data refresh so the dashboard reflects today.</div>',
+    )
+
+
 def compute_sentiment(changes):
     valid = [c for c in changes if c is not None]
     if not valid:
@@ -199,6 +255,10 @@ a { color: inherit; text-decoration: none; }
 .quote-card { flex-basis: 100%; font-style: italic; color: var(--text-secondary); text-align: center; padding: 20px; }
 .footer { text-align: center; padding: 26px 20px 40px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--slate-border); margin-top: 20px; }
 .footer .gold-accent { color: var(--gold); }
+.stale-banner { background: var(--red-dim); border: 1px solid var(--red); color: var(--red); border-radius: 12px;
+  padding: 12px 16px; margin: 0 0 22px; font-size: 0.88rem; font-weight: 600; }
+.stale-banner code { background: rgba(220,38,38,0.12); padding: 1px 5px; border-radius: 5px; font-size: 0.82rem; }
+.header .meta .as-of { color: var(--text-muted); font-size: 0.78rem; }
 """
 
 
@@ -209,6 +269,7 @@ def build_html(data: dict) -> str:
         now = datetime.now(timezone.utc)
     generated_date = now.strftime("%A, %d %B %Y")
     generated_time = now.strftime("%H:%M %Z") or now.strftime("%H:%M")
+    as_of_text, stale_banner = freshness_banner(data, now.date())
 
     uk_cards = "".join(news_card(i, "UK") for i in data.get("uk_news", [])) or '<div class="card"><p class="summary">UK headlines unavailable this run.</p></div>'
     zw_cards = "".join(news_card(i, "Zimbabwe") for i in data.get("zimbabwe_news", [])) or '<div class="card"><p class="summary">Zimbabwe headlines unavailable this run.</p></div>'
@@ -251,9 +312,10 @@ def build_html(data: dict) -> str:
 <style>{CSS}</style></head><body>
 <header class="header">
   <h1><span class="brand-dot">◆</span> Daily Intelligence Dashboard</h1>
-  <div class="meta"><div><strong>{generated_date}</strong></div><div>Generated at {generated_time}</div></div>
+  <div class="meta"><div><strong>{generated_date}</strong></div><div>Generated at {generated_time}</div><div class="as-of">{esc(as_of_text)}</div></div>
 </header>
 <div class="container">
+  {stale_banner}
   <section class="section"><div class="section-title"><span class="accent-bar"></span>📰 UK Headlines</div><div class="grid">{uk_cards}</div></section>
   <section class="section"><div class="section-title"><span class="accent-bar"></span>🇿🇼 Zimbabwe Headlines</div><div class="grid">{zw_cards}</div></section>
   <section class="section"><div class="section-title"><span class="accent-bar"></span>🏉 Sports Watch</div><div class="grid two-col">{sports_html}</div></section>
@@ -280,7 +342,7 @@ def build_html(data: dict) -> str:
     </div>
   </section>
 </div>
-<div class="footer">Generated automatically by <span class="gold-accent">Codex Daily Intelligence Dashboard</span> · {generated_date} at {generated_time}</div>
+<div class="footer">Generated automatically by <span class="gold-accent">Codex Daily Intelligence Dashboard</span> · {generated_date} at {generated_time} · {esc(as_of_text)}</div>
 </body></html>"""
 
 
